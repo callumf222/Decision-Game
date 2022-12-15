@@ -1,0 +1,63 @@
+1,2,3,Go to your computer; Is it turned on?
+2,4,5,Google programming languages; Do any of them appeal to you right now?
+3,2,6,Try to turn it on; Did it turn on?
+4,35,36,Well it has to be python! What else could be appealing!; Have you learnt python before?
+5,41,42,Not surprising got to be dinner time now right!; Fancy takeaway?
+6,7,8,Is it broken?
+7,100,100,Sent it to a technician; wait for it to return home fixed.
+8,9,61,Do you think its time for a new pc/laptop?
+9,62,10,Time to watch a bunch of reviews on YouTube that you won't remember?
+10,11,12,Time to watch some videos on how to program Java then?
+11,20,21,Right Java it is then!; Did you watch some videos?
+12,13,14,On c#?
+13,20,21,Right c# it is then!; Did you watch some videos?
+14,15,16,On c++?
+15,20,21,Right c++ it is then!; Did you watch some videos?
+16,17,18,On css?
+17,20,21,Right css it is then!; Did you watch some videos?
+18,19,63,On HTML?
+19,20,21,Right HTML it is then!; Did you watch some videos?
+20,30,22,Were they helpful?
+21,28,29,Because they were boring?
+22,23,24,Is that because you didn't pay any attention?
+23,100,100,Programming videos are fun! We don't want your kind round here! No new language learnt
+24,25,23,Are you sure?
+25,26,27,We can tell if you lie! Did you pay attention?
+26,100,100,Hmm suspicious maybe try a different video or different methods! Nice try!
+27,100,100,You may not of learnt a new language or even tried! But honestly never loses good job!
+28,100,100,They tend to be! Maybe have a shot another day at least you tried in the end. No new language learnt.
+29,100,100,You need some more motivation! Have a think about your choices and come back! No new language learnt.
+30,31,32,Good think you are ready to start building projects?
+31,100,100,Nice! Great work today we are proud of you. You learnt a new language now keep it up!
+32,33,34,Do you find it easy to learn programming?
+33,100,100,Maybe this language isn't for you try another! Nice try we will give that one to you! New start to a language
+34,100,100,That's okay not everyone does it will click soon! Nice attempt very honest. Good start to a new language.
+35,37,38,Yessssss! Go do some worksheets and come back. Did you learn anything?
+36,100,100,You know what no! We aren't doing this! no python no game! Go away and learn it right now. Good bye. No new language learnt.
+37,39,40,Nice! Think you could build a calculator for us?
+38,100,100,Go to some lectures; watch some video's and build some projects. Picked python that's worth a point.
+39,100,100,Now you have built that calculator; use it to calculate the amount of points you deserve for learning python! a million!
+40,100,100,Come back when you can build one! Great work today started learning python!
+41,43,44,Order it right now. Are you too full up to learn a new programming language now?
+42,100,100,Eh make yourself something healthy then; You ate healthy don't need to learn a new programming language today. You ended without learning a new language but at least you ate well and have a working computer.
+43,100,100,You ended without learning a new language. But you did get takeaway so that is worth it! Get Netflix up on that working computer.
+44,45,46,You've made you decision you have to start to learn one now. How about SQL?
+45,47,48,You are crazy right SQL it will be. Good luck! How about we learn SQL another day?
+46,35,36,Amazing choice! who really wants to learn SQL? You are learning python now no choice. Have you learnt python before?
+47,100,100,You ended without learning a new programming language but i think we can all respect the decision to not learn SQL. Nice work!
+48,49,50,Stop digging your own grave. Ready to get started?
+49,53,56,We are trying to save you here! come on! Get onto youtube and learn how to get started then. Do you know how to create a database now?
+50,51,52,Music to our ears. Should you just head to bed?
+51,100,100,You ended without learning a new language; but you have new found motivation for SQL. Why? Good night!
+52,100,100,You ended without learning a new language; way too indecisive! Work something else without our help!
+53,54,55,Great job try creating some tables and relations. Did you find that okay?
+54,100,100,Great work SQL seems good for you. You started to learn a new language. Nice work!
+55,100,100,Well SQL isn't for everyone (should be for no one). Nice effort today you made a beginning on learning a new language.
+56,57,58,Then this is all your fault! why haven't you been going to your lectures? Are you going to go to your next SQL lecture?
+57,59,60,Yeah you better! Do you think you'll try learning SQL again in the future?
+58,100,100,You ended without learning a new language and without our respect! Go to your lectures then come back to us!
+59,100,100,You know what! We will give that one to you! Started learning a language that's a good effort.
+60,100,100,You aren't getting anyway with that! no language learnt.
+61,100,100,Wow how boring fastest ending possible. No new language and you don't want new gadgets. Boring!
+62,100,100,You ended without even attempting to learn a language; make sure to get some RGB on that new pc tho!
+63,100,100,Make a choice next time! You ended without learning a new language; and frankly do you even like programming?
