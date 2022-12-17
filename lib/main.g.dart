@@ -18,19 +18,22 @@ class DecisionMapAdapter extends TypeAdapter<DecisionMap> {
     };
     return DecisionMap()
       ..ID = fields[0] as int
-      ..nextID = fields[1] as int
-      ..description = fields[2] as String;
+      ..yesID = fields[1] as int
+      ..noID = fields[2] as int
+      ..description = fields[3] as String;
   }
 
   @override
   void write(BinaryWriter writer, DecisionMap obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.ID)
       ..writeByte(1)
-      ..write(obj.nextID)
+      ..write(obj.yesID)
       ..writeByte(2)
+      ..write(obj.noID)
+      ..writeByte(3)
       ..write(obj.description);
   }
 

@@ -1,8 +1,9 @@
 class DecisionMap{
 
-  late int ID;
-  late int nextID;
-  late String description;
+   late int ID;
+   late int yesID;
+   late int noID;
+   late String description;
 
 }
 

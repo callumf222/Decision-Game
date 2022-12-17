@@ -14,9 +14,12 @@ class DecisionMap{
   late int ID;
 
   @HiveField(1)
-  late int nextID;
+  late int yesID;
 
   @HiveField(2)
+  late int noID;
+
+  @HiveField(3)
   late String description;
 }
 
@@ -42,11 +45,15 @@ Future<void> main() async {
 
     DecisionMap decMap = DecisionMap()
       ..ID = int.parse(itemInRow[0])
-      ..nextID =  int.parse(itemInRow[1])
-      ..description = itemInRow[2];
+      ..yesID =  int.parse(itemInRow[1])
+      ..noID = int.parse(itemInRow[2])
+      ..description = itemInRow[3];
     int key = int.parse(itemInRow[0]);
     box.put(key,decMap);
   }
+
+
+
 
   runApp (
     const MaterialApp(
@@ -66,8 +73,9 @@ class MyFlutterApp extends StatefulWidget {
 
 class MyFlutterState extends State<MyFlutterApp> {
 
-  late int ID;
-  late int nextID;
+  late int ID = 1;
+  late int noID;
+  late int yesID;
   String description = "";
 
   @override
@@ -76,20 +84,36 @@ class MyFlutterState extends State<MyFlutterApp> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
        setState(() {
-        /*DecisionMap current = decisionMap.first;
-        ID = current.ID;
-        nextID = current.nextID;
-        description = current.description;*/
+         DecisionMap? current = box.get(ID);
+         if(current != null) {
+           ID = current.ID;
+           yesID = current.yesID;
+           noID = current.noID;
+           description = current.description;
+         }
       });
     });
   }
 
-  void clickHandler() {
+  void noclickHandler() {
     setState(() {
-      DecisionMap? current = box.get(nextID);
+      DecisionMap? current = box.get(ID);
       if(current != null) {
-        ID = current.ID;
-        nextID = current.nextID;
+        ID = current.noID;
+        yesID = current.yesID;
+        noID = current.noID;
+        description = current.description;
+      }
+    });
+  }
+
+  void yesclickHandler() {
+    setState(() {
+      DecisionMap? current = box.get(ID);
+      if(current != null) {
+        ID = current.yesID;
+        yesID = current.yesID;
+        noID = current.noID;
         description = current.description;
       }
     });
@@ -118,7 +142,7 @@ class MyFlutterState extends State<MyFlutterApp> {
               Align(
                 alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
-                  onPressed: () {clickHandler();},
+                  onPressed: () {noclickHandler();},
                   color: const Color(0xff5EBEC4),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
@@ -138,13 +162,12 @@ class MyFlutterState extends State<MyFlutterApp> {
                     ),
                   ),
                 ),
-
               ),
 
               Align(
                 alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
-                  onPressed: () {clickHandler();},
+                  onPressed: () {yesclickHandler();},
                   color: const Color(0xff5EBEC4),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
