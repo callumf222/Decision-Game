@@ -52,9 +52,6 @@ Future<void> main() async {
     box.put(key,decMap);
   }
 
-
-
-
   runApp (
     const MaterialApp(
       home: MyFlutterApp(),
@@ -73,7 +70,7 @@ class MyFlutterApp extends StatefulWidget {
 
 class MyFlutterState extends State<MyFlutterApp> {
 
-  late int ID = 1;
+  late int ID;
   late int noID;
   late int yesID;
   String description = "";
@@ -84,7 +81,7 @@ class MyFlutterState extends State<MyFlutterApp> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
        setState(() {
-         DecisionMap? current = box.get(ID);
+         DecisionMap? current = box.get(1);
          if(current != null) {
            ID = current.ID;
            yesID = current.yesID;
@@ -97,9 +94,9 @@ class MyFlutterState extends State<MyFlutterApp> {
 
   void noclickHandler() {
     setState(() {
-      DecisionMap? current = box.get(ID);
+      DecisionMap? current = box.get(noID);
       if(current != null) {
-        ID = current.noID;
+        ID = current.ID;
         yesID = current.yesID;
         noID = current.noID;
         description = current.description;
@@ -109,9 +106,9 @@ class MyFlutterState extends State<MyFlutterApp> {
 
   void yesclickHandler() {
     setState(() {
-      DecisionMap? current = box.get(ID);
+      DecisionMap? current = box.get(yesID);
       if(current != null) {
-        ID = current.yesID;
+        ID = current.ID;
         yesID = current.yesID;
         noID = current.noID;
         description = current.description;
@@ -123,7 +120,7 @@ class MyFlutterState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffFDF5DF),
+      backgroundColor: const Color(0xff00539f),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -140,10 +137,10 @@ class MyFlutterState extends State<MyFlutterApp> {
             children: [
 
               Align(
-                alignment: const Alignment(0.5, 0.0),
+                alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {noclickHandler();},
-                  color: const Color(0xff5EBEC4),
+                  color: const Color(0xffeea47f),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -165,10 +162,10 @@ class MyFlutterState extends State<MyFlutterApp> {
               ),
 
               Align(
-                alignment: const Alignment(-0.5, 0.0),
+                alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {yesclickHandler();},
-                  color: const Color(0xff5EBEC4),
+                  color: const Color(0xffeea47f),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -200,7 +197,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
                     fontSize: 34,
-                    color: Color(0xff5EBEC4),
+                    color: Color(0xffeea47f),
                   ),
                 ),
               ),
