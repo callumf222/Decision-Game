@@ -120,7 +120,7 @@ class MyFlutterState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff00539f),
+      backgroundColor: const Color(0xff101820/*00539f*/),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -140,7 +140,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                 alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {noclickHandler();},
-                  color: const Color(0xffeea47f),
+                  color: const Color(0xfffee715 /*eea47f*/),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -165,7 +165,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                 alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {yesclickHandler();},
-                  color: const Color(0xffeea47f),
+                  color: const Color(0xfffee715 /*eea47f*/),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -197,7 +197,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
                     fontSize: 34,
-                    color: Color(0xffeea47f),
+                    color: Color(0xfffee715 /*eea47f*/),
                   ),
                 ),
               ),
