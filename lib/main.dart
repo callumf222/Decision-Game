@@ -165,8 +165,8 @@ class MyFlutterState extends State<MyFlutterApp> {
                   child: const Text(
                     "No",
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                     ),
                   ),
@@ -190,39 +190,37 @@ class MyFlutterState extends State<MyFlutterApp> {
                   child: const Text(
                     "Yes",
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                     ),
                   ),
                 ),
-
               ),
 
               Align(
-                alignment: const Alignment(0.0, 0.3),
-                child: MaterialButton(
-                  onPressed: () {restartOnClickHandler();},
-                  color: const Color(0xfffee715),
-                  elevation: 0,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                  textColor: const Color(0xff000000),
-                  height: 40,
-                  minWidth: 140,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 8),
-                  child: const Text(
-                    "Press to restart",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
+                alignment: const Alignment(0.0, 0.4),
+                  child: MaterialButton(
+                    onPressed: () {restartOnClickHandler();},
+                    color: const Color(0xfffee715),
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    textColor: const Color(0xff000000),
+                    height: 40,
+                    minWidth: 140,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
+                    child: const Text(
+                      "Press to restart",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
                     ),
                   ),
-                ),
-
               ),
 
               Align(
@@ -236,23 +234,13 @@ class MyFlutterState extends State<MyFlutterApp> {
                     fontStyle: FontStyle.normal,
                     fontSize: 34,
                     color: Color(0xfffee715),
+                    ),
                   ),
                 ),
-              ),
-
-
-
-
-            ],
-
+            ]),
           ),
-        ),
-      ),
+        )
+      );
 
-    );
   }
 }
-
-
-
-
