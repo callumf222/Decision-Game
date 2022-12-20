@@ -92,7 +92,7 @@ class MyFlutterState extends State<MyFlutterApp> {
     });
   }
 
-  void noclickHandler() {
+  void noClickHandler() {
     setState(() {
       DecisionMap? current = box.get(noID);
       if(current != null) {
@@ -104,7 +104,7 @@ class MyFlutterState extends State<MyFlutterApp> {
     });
   }
 
-  void yesclickHandler() {
+  void yesClickHandler() {
     setState(() {
       DecisionMap? current = box.get(yesID);
       if(current != null) {
@@ -116,11 +116,22 @@ class MyFlutterState extends State<MyFlutterApp> {
     });
   }
 
+  void restartOnClickHandler(){
+    setState(() {
+      DecisionMap? current = box.get(1);
+      if(current != null) {
+        ID = current.ID;
+        yesID = current.yesID;
+        noID = current.noID;
+        description = current.description;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff101820/*00539f*/),
+      backgroundColor: const Color(0xff101820),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -136,11 +147,12 @@ class MyFlutterState extends State<MyFlutterApp> {
             alignment: Alignment.topLeft,
             children: [
 
+
               Align(
                 alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
-                  onPressed: () {noclickHandler();},
-                  color: const Color(0xfffee715 /*eea47f*/),
+                  onPressed: () {noClickHandler();},
+                  color: const Color(0xfffee715),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -164,7 +176,7 @@ class MyFlutterState extends State<MyFlutterApp> {
               Align(
                 alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
-                  onPressed: () {yesclickHandler();},
+                  onPressed: () {yesClickHandler();},
                   color: const Color(0xfffee715 /*eea47f*/),
                   elevation: 0,
                   shape: const RoundedRectangleBorder(
@@ -188,7 +200,33 @@ class MyFlutterState extends State<MyFlutterApp> {
               ),
 
               Align(
-                alignment: Alignment(0.0, -0.7),
+                alignment: const Alignment(0.0, 0.3),
+                child: MaterialButton(
+                  onPressed: () {restartOnClickHandler();},
+                  color: const Color(0xfffee715),
+                  elevation: 0,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  textColor: const Color(0xff000000),
+                  height: 40,
+                  minWidth: 140,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 8),
+                  child: const Text(
+                    "Press to restart",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                ),
+
+              ),
+
+              Align(
+                alignment: const Alignment(0.0, -0.7),
                 child: Text(
                   description,
                   textAlign: TextAlign.center,
@@ -197,31 +235,20 @@ class MyFlutterState extends State<MyFlutterApp> {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
                     fontSize: 34,
-                    color: Color(0xfffee715 /*eea47f*/),
+                    color: Color(0xfffee715),
                   ),
                 ),
               ),
 
-              /*Align(
-                alignment: Alignment(0.0, -0.4),
-                child: Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.clip,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 34,
-                    color: Color(0xff5EBEC4),
-                  ),
-                ),
-              )*/
+
+
 
             ],
 
           ),
         ),
       ),
+
     );
   }
 }
