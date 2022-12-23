@@ -75,6 +75,11 @@ class MyFlutterState extends State<MyFlutterApp> {
   late int yesID;
   String description = "";
 
+  bool visableRestartID = false;
+  bool visableYesID = true;
+  bool visableNoID = true;
+
+
   @override
   void initState()  {
     super.initState();
@@ -88,7 +93,7 @@ class MyFlutterState extends State<MyFlutterApp> {
            noID = current.noID;
            description = current.description;
          }
-      });
+       });
     });
   }
 
@@ -100,6 +105,12 @@ class MyFlutterState extends State<MyFlutterApp> {
         yesID = current.yesID;
         noID = current.noID;
         description = current.description;
+      }
+
+      if(noID == 100){
+        visableRestartID = true;
+        visableNoID = false;
+        visableYesID = false;
       }
     });
   }
@@ -113,6 +124,12 @@ class MyFlutterState extends State<MyFlutterApp> {
         noID = current.noID;
         description = current.description;
       }
+
+      if(yesID == 100){
+        visableRestartID = true;
+        visableNoID = false;
+        visableYesID = false;
+      }
     });
   }
 
@@ -124,6 +141,9 @@ class MyFlutterState extends State<MyFlutterApp> {
         yesID = current.yesID;
         noID = current.noID;
         description = current.description;
+        visableRestartID = false;
+        visableYesID = true;
+        visableNoID = true;
       }
     });
   }
@@ -148,7 +168,9 @@ class MyFlutterState extends State<MyFlutterApp> {
             children: [
 
 
-              Align(
+              Visibility(
+                visible: visableNoID,
+                child: Align(
                 alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {noClickHandler();},
@@ -171,9 +193,12 @@ class MyFlutterState extends State<MyFlutterApp> {
                     ),
                   ),
                 ),
+                ),
               ),
 
-              Align(
+              Visibility(
+                visible: visableYesID,
+                child: Align(
                 alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {yesClickHandler();},
@@ -196,32 +221,36 @@ class MyFlutterState extends State<MyFlutterApp> {
                     ),
                   ),
                 ),
+                ),
               ),
 
-              Align(
-                alignment: const Alignment(0.0, 0.4),
-                  child: MaterialButton(
-                    onPressed: () {restartOnClickHandler();},
-                    color: const Color(0xfffee715),
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                    textColor: const Color(0xff000000),
-                    height: 40,
-                    minWidth: 140,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 8),
-                    child: const Text(
-                      "Press to restart",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.normal,
+              Visibility(
+                  visible: visableRestartID,
+                    child:Align(
+                      alignment: const Alignment(0.0, 0.4),
+                      child: MaterialButton(
+                      onPressed: () {restartOnClickHandler();},
+                      color: const Color(0xfffee715),
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                      textColor: const Color(0xff000000),
+                      height: 40,
+                      minWidth: 140,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: const Text(
+                        "Press to restart",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                        ),
                       ),
                     ),
                   ),
-              ),
+                ),
 
               Align(
                 alignment: const Alignment(0.0, -0.7),
