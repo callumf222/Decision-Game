@@ -252,7 +252,9 @@ class MyFlutterState extends State<MyFlutterApp> {
                   ),
                 ),
 
-              Align(
+              Padding(
+                padding: const EdgeInsets.all(50),
+                child: Align(
                 alignment: const Alignment(0.0, -0.7),
                 child: Text(
                   description,
@@ -266,6 +268,7 @@ class MyFlutterState extends State<MyFlutterApp> {
                     ),
                   ),
                 ),
+              ),
             ]),
           ),
         )
