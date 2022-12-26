@@ -4,6 +4,9 @@ import 'package:hive_flutter/adapters.dart';
 
 import 'package:animated_background/animated_background.dart';
 
+import 'package:flutter/material.dart';
+
+
 import 'package:hive/hive.dart';
 part 'main.g.dart';
 
@@ -71,7 +74,7 @@ class MyFlutterApp extends StatefulWidget {
 
 
 
-class MyFlutterState extends State<MyFlutterApp> {
+class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
 
   late int ID;
   late int noID;
@@ -154,8 +157,28 @@ class MyFlutterState extends State<MyFlutterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff101820),
-      body: Align(
+
+        backgroundColor: const Color(0xff101820),
+
+        body: AnimatedBackground(
+        behaviour: RandomParticleBehaviour(
+        options: const ParticleOptions(
+        spawnMaxRadius: 50,
+        spawnMinSpeed: 10.00,
+        particleCount: 68,
+        spawnMaxSpeed: 50,
+        minOpacity: 0.3,
+        spawnOpacity: 0.4,
+        baseColor: Colors.blue,
+        image: Image(image: AssetImage('assets/Images/Flutter.png')),
+      ),
+    ),
+
+    vsync: this,
+
+
+
+      child: Align(
         alignment: Alignment.center,
         child: SizedBox(
           height: MediaQuery
@@ -272,8 +295,9 @@ class MyFlutterState extends State<MyFlutterApp> {
               ),
             ]),
           ),
-        )
-      );
+        ),
+        ),
+    );
 
   }
 }
