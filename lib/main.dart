@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import 'decisionmap.dart';
+import 'package:animated_background/animated_background.dart';
 
 import 'package:hive/hive.dart';
 part 'main.g.dart';
+
 
 @HiveType(typeId: 0)
 class DecisionMap{
@@ -67,6 +68,8 @@ class MyFlutterApp extends StatefulWidget {
     return MyFlutterState();
   }
 }
+
+
 
 class MyFlutterState extends State<MyFlutterApp> {
 
@@ -166,8 +169,6 @@ class MyFlutterState extends State<MyFlutterApp> {
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
-
-
               Visibility(
                 visible: visableNoID,
                 child: Align(
