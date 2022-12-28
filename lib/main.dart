@@ -4,12 +4,8 @@ import 'package:hive_flutter/adapters.dart';
 
 import 'package:animated_background/animated_background.dart';
 
-import 'package:flutter/material.dart';
-
-
 import 'package:hive/hive.dart';
 part 'main.g.dart';
-
 
 @HiveType(typeId: 0)
 class DecisionMap{
@@ -31,12 +27,10 @@ late Box<DecisionMap> box;
 
 Future<void> main() async {
 
-
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();   //HIVE SETUP
   Hive.registerAdapter(DecisionMapAdapter());
   box = await Hive.openBox<DecisionMap>('decisionMap');
-
 
   String csv = "decision_map.csv"; //path to csv file asset
   String fileData = await rootBundle.loadString(csv);
@@ -72,8 +66,6 @@ class MyFlutterApp extends StatefulWidget {
   }
 }
 
-
-
 class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
 
   late int ID;
@@ -84,7 +76,6 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
   bool visableRestartID = false;
   bool visableYesID = true;
   bool visableNoID = true;
-
 
   @override
   void initState()  {
@@ -157,9 +148,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         backgroundColor: const Color(0xff101820),
-
         body: AnimatedBackground(
         behaviour: RandomParticleBehaviour(
         options: const ParticleOptions(
@@ -172,10 +161,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
           baseColor: Colors.blue,
       ),
     ),
-
     vsync: this,
-
-
 
       child: Align(
         alignment: Alignment.center,
@@ -191,6 +177,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
+
               Visibility(
                 visible: visableNoID,
                 child: Align(
