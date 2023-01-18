@@ -73,9 +73,10 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
   late int yesID;
   String description = "";
 
+  bool visableStartID = true;
   bool visableRestartID = false;
-  bool visableYesID = true;
-  bool visableNoID = true;
+  bool visableYesID = false;
+  bool visableNoID = false;
 
   @override
   void initState()  {
@@ -88,7 +89,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
            ID = current.ID;
            yesID = current.yesID;
            noID = current.noID;
-           description = current.description;
+           description = "Press start when you are ready!";
          }
        });
     });
@@ -130,7 +131,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
     });
   }
 
-  void restartOnClickHandler(){
+  void startOnClickHandler(){
     setState(() {
       DecisionMap? current = box.get(1);
       if(current != null) {
@@ -138,9 +139,29 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
         yesID = current.yesID;
         noID = current.noID;
         description = current.description;
+
+        visableStartID = false;
         visableRestartID = false;
         visableYesID = true;
         visableNoID = true;
+      }
+    });
+  }
+
+  void restartOnClickHandler(){
+    setState(() {
+      DecisionMap? current = box.get(1);
+      if(current != null) {
+        ID = current.ID;
+        yesID = current.yesID;
+        noID = current.noID;
+        description = "Press start when you are ready!";
+        //description = current.description;
+
+        visableStartID = true;
+        visableRestartID = false;
+        visableYesID = false;
+        visableNoID = false;
       }
     });
   }
@@ -177,6 +198,35 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
           child: Stack(
             alignment: Alignment.topLeft,
             children: [
+
+
+              Visibility(
+                visible: visableStartID,
+                child: Align(
+                  alignment: const Alignment(0.0, 0.0),
+                  child: MaterialButton(
+                    onPressed: () {startOnClickHandler();},
+                    color: const Color(0xfffee715),
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    textColor: const Color(0xff000000),
+                    height: 40,
+                    minWidth: 140,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
+                    child: const Text(
+                      "Start",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
 
               Visibility(
                 visible: visableNoID,
