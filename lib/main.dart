@@ -313,7 +313,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                 ),
 
               Padding(
-                padding: const EdgeInsets.all(50),
+                padding: const EdgeInsets.all(70),
                 child: Align(
                 alignment: const Alignment(0.0, -0.7),
                 child: Text(
@@ -323,7 +323,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
-                    fontSize: 34,
+                    fontSize: 45,
                     color: Color(0xfffee715),
                     ),
                   ),
