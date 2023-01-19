@@ -245,15 +245,18 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
 
   Color getColor(){
 
-    if(buttonPressed == true) {
-      R -= 2;
-      B += 2;
-      buttonPressed = false;
-      return Color.fromRGBO(R, 24, B, 1);
+    if(R != 2) {
+      if (buttonPressed == true) {
+        R -= 2;
+        B += 2;
+        buttonPressed = false;
+        return Color.fromRGBO(R, 24, B, 1);
+      } else {
+        return const Color.fromRGBO(16, 24, 32, 1);
+      }
     }else{
-      return const Color.fromRGBO(16, 24, 32, 1);
+      return Color.fromRGBO(R, 24, B, 1);
     }
-
   }
 
   @override
