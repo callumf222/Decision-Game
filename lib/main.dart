@@ -61,6 +61,8 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   late int yesID;
   String description = "";
 
+  bool buttonPressed = false;
+
   bool visableProgramID = true;
   bool visableGameID = true;
 
@@ -68,7 +70,6 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   bool visableRestartID = false;
   bool visableYesID = false;
   bool visableNoID = false;
-
 
   @override
   void initState()  {
@@ -121,6 +122,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         visableProgramID = false;
         visableYesID = true;
         visableNoID = true;
+        buttonPressed = true;
       });
 
   }
@@ -159,6 +161,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
       visableProgramID = false;
       visableYesID = true;
       visableNoID = true;
+      buttonPressed = true;
     });
 
   }
@@ -178,6 +181,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         visableNoID = false;
         visableYesID = false;
       }
+      buttonPressed = true;
     });
   }
 
@@ -196,6 +200,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         visableNoID = false;
         visableYesID = false;
       }
+      buttonPressed = true;
     });
   }
 
@@ -212,6 +217,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         visableYesID = true;
         visableNoID = true;
       }
+      buttonPressed = true;
     });
   }
 
@@ -228,13 +234,35 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         visableProgramID = true;
         visableGameID = true;
       }
+      buttonPressed = true;
+      R = 16;
+      B = 32;
     });
+  }
+
+  int R = 16;
+  int B = 32;
+
+  Color getColor(){
+
+    if(buttonPressed == true) {
+      R -= 2;
+      B += 2;
+      buttonPressed = false;
+      return Color.fromRGBO(R, 24, B, 1);
+    }else{
+      return const Color.fromRGBO(16, 24, 32, 1);
+    }
+
   }
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
-        backgroundColor: const Color(0xff101820),
+        backgroundColor: getColor(),
         body: AnimatedBackground(
         behaviour: RandomParticleBehaviour(
         options: const ParticleOptions(
