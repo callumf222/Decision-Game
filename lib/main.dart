@@ -69,6 +69,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   bool visableYesID = false;
   bool visableNoID = false;
 
+
   @override
   void initState()  {
     super.initState();
@@ -89,7 +90,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   Future<void> program() async {
 
 
-    String csv = "decision_map.csv"; //path to csv file asset
+    String csv = "artProgrammingLanguage_map.csv"; //path to csv file asset
     String fileData = await rootBundle.loadString(csv);
     List <String> rows = fileData.split("\n");
 
@@ -127,7 +128,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   Future<void> game() async {
 
 
-    String csv = "second_map.csv"; //path to csv file asset
+    String csv = "artGameBuying_map.csv"; //path to csv file asset
     String fileData = await rootBundle.loadString(csv);
     List <String> rows = fileData.split("\n");
 
@@ -221,10 +222,11 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
         ID = current.ID;
         yesID = current.yesID;
         noID = current.noID;
-        description = "Press start when you are ready!";
+        description = "Pick a Map!";
 
-        visableStartID = true;
         visableRestartID = false;
+        visableProgramID = true;
+        visableGameID = true;
       }
     });
   }
@@ -279,7 +281,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 8),
                     child: const Text(
-                      "Programming Language",
+                      "Art of Learning a Programming Language",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -307,7 +309,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 8),
                     child: const Text(
-                      "Game Art",
+                      "Art of Buying a Game",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
