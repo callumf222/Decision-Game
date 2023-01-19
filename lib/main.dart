@@ -59,7 +59,7 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   late int ID;
   late int noID;
   late int yesID;
-  String description = "";
+  String description = "Pick a Map!";
 
   bool buttonPressed = false;
 
