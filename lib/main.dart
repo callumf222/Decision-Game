@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -27,53 +28,43 @@ late Box<DecisionMap> box;
 
 Future<void> main() async {
 
+
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();   //HIVE SETUP
+  await Hive.initFlutter(); //HIVE SETUP
   Hive.registerAdapter(DecisionMapAdapter());
   box = await Hive.openBox<DecisionMap>('decisionMap');
 
-  String csv = "decision_map.csv"; //path to csv file asset
-  String fileData = await rootBundle.loadString(csv);
-  List <String> rows = fileData.split("\n");
 
-  for (int i = 0; i < rows.length; i++)  {
-    //selects an item from row and places
-    String row = rows[i];
-    List <String> itemInRow = row.split(",");
 
-    DecisionMap decMap = DecisionMap()
-      ..ID = int.parse(itemInRow[0])
-      ..yesID =  int.parse(itemInRow[1])
-      ..noID = int.parse(itemInRow[2])
-      ..description = itemInRow[3];
-    int key = int.parse(itemInRow[0]);
-    box.put(key,decMap);
-  }
-
-  runApp (
-    const MaterialApp(
-      home: MyFlutterApp(),
-    ),
+  runApp (  const MaterialApp(
+    home: MyFlutterApp(),
+  ),
   );
 }
+
+
 
 class MyFlutterApp extends StatefulWidget {
   const MyFlutterApp({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return MyFlutterState();
+    return HomeScreen();
   }
 }
 
-class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
+
+class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
 
   late int ID;
   late int noID;
   late int yesID;
   String description = "";
 
-  bool visableStartID = true;
+  bool visableProgramID = true;
+  bool visableGameID = true;
+
+  bool visableStartID = false;
   bool visableRestartID = false;
   bool visableYesID = false;
   bool visableNoID = false;
@@ -89,10 +80,86 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
            ID = current.ID;
            yesID = current.yesID;
            noID = current.noID;
-           description = "Press start when you are ready!";
+           description = "Pick a Map!";
          }
        });
     });
+  }
+
+  Future<void> program() async {
+
+
+    String csv = "decision_map.csv"; //path to csv file asset
+    String fileData = await rootBundle.loadString(csv);
+    List <String> rows = fileData.split("\n");
+
+    for (int i = 0; i < rows.length; i++) {
+      //selects an item from row and places
+      String row = rows[i];
+      List <String> itemInRow = row.split(",");
+
+      DecisionMap decMap = DecisionMap()
+        ..ID = int.parse(itemInRow[0])
+        ..yesID = int.parse(itemInRow[1])
+        ..noID = int.parse(itemInRow[2])
+        ..description = itemInRow[3];
+      int key = int.parse(itemInRow[0]);
+      box.put(key, decMap);
+    }
+
+      setState(() {
+        DecisionMap? current = box.get(1);
+        if(current != null) {
+          ID = current.ID;
+          yesID = current.yesID;
+          noID = current.noID;
+          description = current.description;
+        }
+
+        visableGameID = false;
+        visableProgramID = false;
+        visableYesID = true;
+        visableNoID = true;
+      });
+
+  }
+
+  Future<void> game() async {
+
+
+    String csv = "second_map.csv"; //path to csv file asset
+    String fileData = await rootBundle.loadString(csv);
+    List <String> rows = fileData.split("\n");
+
+    for (int i = 0; i < rows.length; i++) {
+      //selects an item from row and places
+      String row = rows[i];
+      List <String> itemInRow = row.split(",");
+
+      DecisionMap decMap = DecisionMap()
+        ..ID = int.parse(itemInRow[0])
+        ..yesID = int.parse(itemInRow[1])
+        ..noID = int.parse(itemInRow[2])
+        ..description = itemInRow[3];
+      int key = int.parse(itemInRow[0]);
+      box.put(key, decMap);
+    }
+
+    setState(() {
+      DecisionMap? current = box.get(1);
+      if(current != null) {
+        ID = current.ID;
+        yesID = current.yesID;
+        noID = current.noID;
+        description = current.description;
+      }
+
+      visableGameID = false;
+      visableProgramID = false;
+      visableYesID = true;
+      visableNoID = true;
+    });
+
   }
 
   void noClickHandler() {
@@ -141,7 +208,6 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
         description = current.description;
 
         visableStartID = false;
-        visableRestartID = false;
         visableYesID = true;
         visableNoID = true;
       }
@@ -156,12 +222,9 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
         yesID = current.yesID;
         noID = current.noID;
         description = "Press start when you are ready!";
-        //description = current.description;
 
         visableStartID = true;
         visableRestartID = false;
-        visableYesID = false;
-        visableNoID = false;
       }
     });
   }
@@ -199,6 +262,62 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
             alignment: Alignment.topLeft,
             children: [
 
+              Visibility(
+                visible: visableProgramID,
+                child: Align(
+                  alignment: const Alignment(-0.5, 0.0),
+                  child: MaterialButton(
+                    onPressed: () {program();},
+                    color: const Color(0xfffee715),
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    textColor: const Color(0xff000000),
+                    height: 50,
+                    minWidth: 140,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
+                    child: const Text(
+                      "Programming Language",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Visibility(
+                visible: visableGameID,
+                child: Align(
+                  alignment: const Alignment(0.5, 0.0),
+                  child: MaterialButton(
+                    onPressed: () {game();},
+                    color: const Color(0xfffee715),
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    textColor: const Color(0xff000000),
+                    height: 50,
+                    minWidth: 140,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
+                    child: const Text(
+                      "Game Art",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
 
               Visibility(
                 visible: visableStartID,
@@ -212,7 +331,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.zero,
                     ),
                     textColor: const Color(0xff000000),
-                    height: 40,
+                    height: 50,
                     minWidth: 140,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 8),
@@ -231,7 +350,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
               Visibility(
                 visible: visableNoID,
                 child: Align(
-                alignment: const Alignment(-0.5, 0.0),
+                alignment: const Alignment(0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {noClickHandler();},
                   color: const Color(0xfffee715),
@@ -240,7 +359,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.zero,
                   ),
                   textColor: const Color(0xff000000),
-                  height: 40,
+                  height: 50,
                   minWidth: 140,
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16, vertical: 8),
@@ -259,7 +378,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
               Visibility(
                 visible: visableYesID,
                 child: Align(
-                alignment: const Alignment(0.5, 0.0),
+                alignment: const Alignment(-0.5, 0.0),
                 child: MaterialButton(
                   onPressed: () {yesClickHandler();},
                   color: const Color(0xfffee715 /*eea47f*/),
@@ -268,7 +387,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.zero,
                   ),
                   textColor: const Color(0xff000000),
-                  height: 40,
+                  height: 50,
                   minWidth: 140,
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16, vertical: 8),
@@ -296,7 +415,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.zero,
                       ),
                       textColor: const Color(0xff000000),
-                      height: 40,
+                      height: 50,
                       minWidth: 140,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 8),
