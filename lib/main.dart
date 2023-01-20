@@ -66,10 +66,12 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
   bool visableProgramID = true;
   bool visableGameID = true;
 
-  bool visableStartID = false;
   bool visableRestartID = false;
   bool visableYesID = false;
   bool visableNoID = false;
+
+  int R = 16;
+  int B = 32;
 
   @override
   void initState()  {
@@ -204,22 +206,6 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
     });
   }
 
-  void startOnClickHandler(){
-    setState(() {
-      DecisionMap? current = box.get(1);
-      if(current != null) {
-        ID = current.ID;
-        yesID = current.yesID;
-        noID = current.noID;
-        description = current.description;
-
-        visableStartID = false;
-        visableYesID = true;
-        visableNoID = true;
-      }
-      buttonPressed = true;
-    });
-  }
 
   void restartOnClickHandler(){
     setState(() {
@@ -239,9 +225,6 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
       B = 32;
     });
   }
-
-  int R = 16;
-  int B = 32;
 
   Color getColor(){
 
@@ -352,33 +335,6 @@ class HomeScreen extends State<MyFlutterApp> with TickerProviderStateMixin {
               ),
 
 
-              Visibility(
-                visible: visableStartID,
-                child: Align(
-                  alignment: const Alignment(0.0, 0.0),
-                  child: MaterialButton(
-                    onPressed: () {startOnClickHandler();},
-                    color: const Color(0xfffee715),
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                    textColor: const Color(0xff000000),
-                    height: 50,
-                    minWidth: 140,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 8),
-                    child: const Text(
-                      "Start",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.normal,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
 
               Visibility(
                 visible: visableNoID,

@@ -5,6 +5,6 @@ Decision Map Game
 - Use yes or no to work your way through the questions
 - Unzip and make sure Hive is connected.
 - To execute, run main file in windows.
+- Hope you enjoy :)
 
 Youtube Link
-https://youtu.be/sO1Hzz_OaAM
